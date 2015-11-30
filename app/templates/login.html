@@ -1,0 +1,57 @@
+<script id="my-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Registrese en HappyWait</h1>
+    </ion-header-bar>
+    <ion-content class="form-registro">
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Nombres</span>
+          <input type="text"
+                 ng-class="{'invalid-log':login.invalidRegister}"
+                 ng-model="login.register.name">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Dni</span>
+          <input type="number"
+                 ng-class="{'invalid-log':login.invalidRegister || login.invalidRegisterDni}"
+                 placeholder="8 digitos"
+                 required
+                 ng-model="login.register.dni">
+        </label>
+      </div>
+      <div class="padding">
+        <button class="btn-login" ng-click="login.CreateUser(login.register)">Registrarse</button>
+        <button class="btn-login" ng-click="login.closeModal()">Cancelar</button>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+<ion-view hide-nav-bar="true">
+  <ion-content class="login">
+    <div class="lgContent">
+      <div class="lgcWrapp">
+        <div>
+          <h2>Happy Wait</h2>
+          <div class="lgImput">
+            <input type="text"
+                   ng-class="{'invalid-log':account.invalidLogin}"
+                   placeholder="Nombre" ng-model="login.user.name"/>
+            <input type="text"
+                   ng-class="{'invalid-log':account.invalidLogin}"
+                   required
+                   placeholder="DNI (8 digitos)" ng-model="login.user.dni"/>
+          </div>
+          <button class="btn-login" ng-click="account.saveUser(login.user)">
+            Ingresar
+          </button>
+
+          <p class="create-user-login">Si no tiene cuenta,
+             <span ng-click="login.openRegister()">Registrese</span>
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

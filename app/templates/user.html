@@ -1,0 +1,23 @@
+<ion-view title="Usuario">
+  <!-- *********** CABECERA ****************** -->
+  <ion-nav-title>
+    <i class="icon ion-ios-timer"></i> Usuario
+  </ion-nav-title>
+  <!-- *********** FIN CABECERA ****************** -->
+
+  <ion-content scrollbar-y="false" class="has-header userApp">
+    <div id="profile-bg"></div>
+    <div id="content">
+      <div id="profile-info">
+        <img id="profile-image" src="images/user.png">
+        <h3 id="profile-name">{{profileApp.user.name}}</h3>
+          <span id="profile-description">DNI : {{profileApp.user.dni}}</span>
+      </div>
+      <div class="padding">
+        <button class="btn-login" ng-click="profileApp.closeSession()">Cerrar sesión</button>
+        <button class="btn-login" ng-click="profileApp.closeApp()">Cerrar app</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+

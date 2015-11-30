@@ -1,0 +1,19 @@
+<ion-tabs class="tabs-icon-top tabs-color-active-positive"
+          id="tabs-happy"
+          ng-class="{'hidden-tabs':account.userDNI==null}">
+  <!-- Usuario Tab -->
+  <ion-tab title="Usuario" icon-off="ion-ios-person-outline" disabled="account.userDNI==null" icon-on="ion-ios-person" href="#/app/user">
+
+    <ion-nav-view name="usuario"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Negocios Tab -->
+  <ion-tab title="Negocios" icon-off="ion-ios-home-outline" disabled="account.userDNI==null" icon-on="ion-ios-home" href="#/app/home">
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Ubícanos Tab -->
+  <ion-tab title="Ubícanos" icon-off="ion-ios-location-outline" disabled="account.userDNI==null" icon-on="ion-ios-location" href="#/app/map">
+    <ion-nav-view name="tab-maps"></ion-nav-view>
+  </ion-tab>
+</ion-tabs>

@@ -1,0 +1,9 @@
+{
+  "name": "happyWait",
+  "app_id": ""
+  ,"proxies":[
+    {
+      "path": "/api",
+      "proxyUrl": "http://0.0.0.0:3000/api"
+    }]
+}

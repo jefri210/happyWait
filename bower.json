@@ -1,0 +1,18 @@
+{
+  "name": "HappyWait",
+  "version": "0.0.0",
+  "dependencies": {
+    "ionic": "1.1.0",
+    "ngCordova": "v0.1.14-alpha",
+    "jquery": "~2.1.4",
+    "restangular": "~1.5.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.3.6",
+    "angular-scenario": "~1.3.6",
+    "js-mobile-console": "*"
+  },
+  "resolutions": {
+    "angular": ">= 1.3.6"
+  }
+}

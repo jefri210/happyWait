@@ -1,0 +1,26 @@
+<ion-view title="Agregar Turno" hide-back-button="true">
+  <!-- *********** CABECERA ********************* -->
+  <ion-nav-title>
+    <i class="icon ion-ios-home"></i> Negocios
+  </ion-nav-title>
+  <!--<ion-nav-buttons side="left">-->
+    <!--<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>-->
+  <!--</ion-nav-buttons>-->
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-document-text"></button>
+    <button class="button button-icon icon ion-android-more-vertical"></button>
+  </ion-nav-buttons>
+  <!-- *********** FIN CABECERA ****************** -->
+
+  <ion-content class="has-header" overflow-scroll='true'>
+    <ion-list class="list-element-app list-sites">
+      <ion-item class="header-list">
+        Negocios en Lima
+      </ion-item>
+      <ion-item ng-repeat="spot in spots" href="#/app/entities/{{spot.idEstablecimiento}}">
+        <h4>{{spot.descripcion}}</h4>
+        <!--<p>3 sucursales</p>-->
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

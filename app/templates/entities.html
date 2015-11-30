@@ -1,0 +1,25 @@
+<ion-view title="Agregar Turno">
+  <!-- *********** CABECERA ********************* -->
+  <ion-nav-title>
+    <i class="icon ion-ios-timer"></i> Agregar Turno
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-android-more-vertical"></button>
+  </ion-nav-buttons>
+  <!-- *********** FIN CABECERA ****************** -->
+  <ion-content class="has-header" overflow-scroll='true'>
+    <div class="list list-element-app list-element-app-simple list-entities">
+      <a class="item header-list" href="#">
+        Servicios del negocio
+      </a>
+      <a class="item item-thumbnail-left item-entities"
+         ng-repeat="entity in entitiesPart.entities.queues"
+         href="#/app/entity/{{entitiesPart.entities.idEstablecimiento}}/{{entity.idQueue}}">
+        <!--{{entitiesPart.entities.idEstablecimiento}}/-->
+        <img src="images/icon-entity.png" class="logo-entity"/>
+        <h2>{{entity.descripcion}} </h2>
+        <p>{{entitiesPart.entities.descripcion}}</p>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

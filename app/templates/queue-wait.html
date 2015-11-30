@@ -1,0 +1,102 @@
+<ion-view title="En cola">
+  <!-- *********** CABECERA ****************** -->
+  <ion-nav-title>
+    <i class="icon ion-ios-timer"></i> Esperando...
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-android-more-vertical"></button>
+  </ion-nav-buttons>
+  <!-- *********** FIN CABECERA ****************** -->
+  <ion-content class="has-header block-queue">
+    <div class="cont-circles">
+      <div class="circle-form circle-1">
+        <div class="circle-form circle-2"
+             ng-class="{
+              normalUserCircle:ctrlQueue.percentTime>7,
+              mediumUserCircle:ctrlQueue.percentTime>3 && ctrlQueue.percentTime<8,
+              closeUserCircle:ctrlQueue.percentTime<4
+             }">
+          <ul class="list-circle circle-indication-turn">
+            <li>Faltan</li>
+            <li class="number-in-wait">{{ctrlQueue.percentTime}}</li>
+            <li><i class="icon ion-android-contact"></i> personas</li>
+          </ul>
+          <ul class="list-circle circle-my-turn">
+            <li>Mi Turno</li>
+            <li>A8</li>
+          </ul>
+          <!--ng-style="{'transform':'translate3d(0px,'+ctrlQueue.percentTime+'%, 0px)'}"-->
+          <!-- ng-style="{'top':ctrlQueue.percentTime+'%'}"-->
+          <div class="back-color"></div>
+        </div>
+        <div class="circle-form circle-3">
+          <p>80'</p>
+          <p>aprox.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="block-specification">
+      <div class="name-entity">
+        {{ctrlQueue.entity.descripcion}}
+      </div>
+      <div class="site-entity">
+        <img src="images/icon-entity.png" class="logo-entity"/>
+        <div class="cont-text-site">
+          <p>Ciudad Universitaria</p>
+          <p>av. universitaria</p>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+<!--<ion-view title="En cola">-->
+  <!--&lt;!&ndash; *********** CABECERA ****************** &ndash;&gt;-->
+  <!--<ion-nav-title>-->
+    <!--<i class="icon ion-ios-timer"></i> Esperando...-->
+  <!--</ion-nav-title>-->
+  <!--<ion-nav-buttons side="right">-->
+    <!--<button class="button button-icon icon ion-android-more-vertical"></button>-->
+  <!--</ion-nav-buttons>-->
+  <!--&lt;!&ndash; *********** FIN CABECERA ****************** &ndash;&gt;-->
+  <!--<ion-content class="has-header block-queue">-->
+    <!--<div class="cont-circles">-->
+      <!--<div class="circle-form circle-1">-->
+        <!--<div class="circle-form circle-2 circle-2-cont">-->
+            <!--<ul class="list-circle circle-indication-turn">-->
+              <!--<li>Faltan</li>-->
+              <!--<li class="number-in-wait">8</li>-->
+              <!--<li><i class="icon ion-android-contact"></i> personas</li>-->
+            <!--</ul>-->
+            <!--<ul class="list-circle circle-my-turn">-->
+              <!--<li>Mi Turno</li>-->
+              <!--<li>A8</li>-->
+            <!--</ul>-->
+            <!--&lt;!&ndash; ng-style="{'transform:':'translate3d(0px,'+ctrlQueue.percentTime+'%, 0px)'}"&ndash;&gt;-->
+            <!--<div class="circle-form circle-2 circle-2-background"-->
+                 <!--ng-style="{'transform':'translate3d(0px,'+ctrlQueue.percentTime+'%, 0px)'}">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="circle-form circle-3">-->
+          <!--<p>80'</p>-->
+          <!--<p>aprox.</p>-->
+        <!--</div>-->
+      <!--</div>-->
+
+    <!--</div>-->
+
+    <!--<div class="block-specification">-->
+      <!--<div class="name-entity">-->
+        <!--Banca y seguros-->
+      <!--</div>-->
+      <!--<div class="site-entity">-->
+        <!--<img src="images/icon-entity.png" class="logo-entity"/>-->
+        <!--<div class="cont-text-site">-->
+          <!--<p>Av. Francisco B.</p>-->
+          <!--<p>Lima 150</p>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</ion-content>-->
+<!--</ion-view>-->
