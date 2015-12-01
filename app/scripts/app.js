@@ -18,7 +18,7 @@ angular.module('starter', ['ionic','starter.controller','ngCordova','config','re
   });
     var url;
     if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
-      url='http://0.0.0.0:3000/'; // esta en mobile
+      url='https://colas.localtunnel.me/'; // esta en mobile
     } else {
       url=''; //this is the browser // DESARROLLO EN BROWSER
     }
@@ -84,20 +84,27 @@ angular.module('starter', ['ionic','starter.controller','ngCordova','config','re
         $state.go('app.home');
       }
     };
-    //$ionicPlatform.ready(function(){
-      $rootScope.account.checkState();
-    //});
-    mobileConsole.show();
-    if (mobileConsole) {
-      ////console.log("mobile console");
-      mobileConsole.options({
-        showOnError: true,
-        proxyConsole: false,
-        isCollapsed: true,
-        catchErrors: true
-      });
-    }
-    mobileConsole.show();
+
+    $rootScope.account.checkState();
+
+    $rootScope.queueCola={
+      motivo:true,
+      setMotivo: function (val) {
+        this.motivo=val;
+      }
+    };
+
+    //mobileConsole.show();
+    //if (mobileConsole) {
+    //  ////console.log("mobile console");
+    //  mobileConsole.options({
+    //    showOnError: true,
+    //    proxyConsole: false,
+    //    isCollapsed: true,
+    //    catchErrors: true
+    //  });
+    //}
+    //mobileConsole.show();
 })
   .service('api', function (Restangular) {
     return {
@@ -130,7 +137,7 @@ angular.module('starter', ['ionic','starter.controller','ngCordova','config','re
         return this.user;
       },
       setUser:function(user){
-        console.log("setUser",user);
+        //console.log("setUser",user);
         this.user=user;
       }
     };
@@ -171,7 +178,7 @@ angular.module('starter', ['ionic','starter.controller','ngCordova','config','re
       return amt + '' + unitStr;
     }
   })
-  .config(function($stateProvider,$urlRouterProvider,$ionicConfigProvider,$httpProvider){
+  .config(function($stateProvider,$urlRouterProvider,$ionicConfigProvider,$httpProvider,RestangularProvider){
     $stateProvider
       .state('app', {
         url: '/app',
@@ -270,6 +277,7 @@ angular.module('starter', ['ionic','starter.controller','ngCordova','config','re
     $ionicConfigProvider.navBar.alignTitle('left');
     $ionicConfigProvider.tabs.position('bottom');
     $ionicConfigProvider.tabs.style('standard');
+    RestangularProvider.setDefaultHttpFields({ cache: true });
     //$ionicConfigProvider.scrolling.jsScrolling(false);
   })
 ;

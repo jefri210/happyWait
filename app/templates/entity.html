@@ -3,16 +3,16 @@
   <ion-nav-title>
     <i class="icon ion-ios-timer"></i> Agregar Turno
   </ion-nav-title>
-  <ion-nav-buttons side="right">
-    <button class="button button-icon icon ion-android-more-vertical"></button>
-  </ion-nav-buttons>
+  <!--<ion-nav-buttons side="right">-->
+    <!--<button class="button button-icon icon ion-android-more-vertical"></button>-->
+  <!--</ion-nav-buttons>-->
   <!-- *********** FIN CABECERA ****************** -->
   <ion-content class="has-header">
     <div ng-repeat="entity in entityPart.entity.queues" ng-if="entityPart.idQueue==entity.idQueue">
       <!--ng-if="entityPart.idQueue==entity.id"-->
       <div class="list list-element-app list-element-app-simple list-entities">
         <a class="item item-thumbnail-left item-entities entity-selected" href="#/app/entities">
-          <img src="images/icon-entity.png" class="logo-entity"/>
+          <img ng-src="{{entityPart.entity.urlImg}}" class="logo-entity"/>
           <h2>{{entityPart.entity.descripcion}}</h2>
           <p>{{entity.descripcion}}</p>
           <p>CIUDAD UNIVERSITARIA</p>
@@ -22,13 +22,19 @@
       <div class="block-entity block-entity-title">
         Solicitudes y atención
       </div>
-      <div class="block-entity">
-        {{entityPart.entity.fechaCreacion|date : 'dd-MM-yyyy'}}
-      </div>
-      <div class="block-entity">
-        Ingrese su turno
-      </div>
+      <!--<div class="block-entity">-->
+        <!--{{entityPart.entity.fechaCreacion|date : 'dd-MM-yyyy'}}-->
+      <!--</div>-->
+      <!--<div class="block-entity">-->
+        <!--Ingrese su turno-->
+      <!--</div>-->
       <a href="#/app/entities/{{entityPart.entity.idEstablecimiento}}/{{entity.idQueue}}"
+         ng-click="queueCola.setMotivo(false)"
+         class="button block-entity block-entity-btn-send">
+        ver cola
+      </a>
+      <a href="#/app/entities/{{entityPart.entity.idEstablecimiento}}/{{entity.idQueue}}"
+         ng-click="queueCola.setMotivo(true)"
          class="button block-entity block-entity-btn-send">
         Aceptar
       </a>

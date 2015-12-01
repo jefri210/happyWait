@@ -226,31 +226,70 @@ angular.module('starter.controller', ['ngCordova'])
     $scope.entityPart._constructor();
     console.log("entity");
   }])
-  .controller('queueCtrl', ['$scope', '$interval', 'api', '$stateParams','$cordovaLocalNotification', function ($scope, $interval, api, $stateParams,$cordovaLocalNotification) {
+  .controller('queueCtrl', ['$scope', '$interval', 'api', '$stateParams','$cordovaLocalNotification', 'userApp',
+    function ($scope, $interval, api, $stateParams,$cordovaLocalNotification,userApp) {
     console.log("queue");
     $scope.ctrlQueue = {
-      percentTime: 10,
+      percentTime: 0,
       interval: null,
       entity: {},
+      turno:{},
+      user:userApp.getUser(),
       _constructor: function () {
         var self = this;
 
         console.log('cola');
+        if($scope.queueCola.motivo){
+
+          api.base.one('queue').one($stateParams.idQueue).one('user').customPOST({dni:self.user.dni}).then(function (res) {
+            console.log('resT',res);
+            self.currentActualQueque();
+          }.bind(this), function (err) {
+            if(err.status==400){
+              self.currentActualQueque();
+            }
+          }.bind(this));
+        }else{
+          self.currentActualQueque();
+        }
 
         api.base.one('spot').one($stateParams.idQueue).get()
           .then(function (res) {
             $scope.safeApply(function () {
               self.entity = res;
             });
-            console.log(self.entity.descripcion);
           }.bind(this));
 
         self.interval = $interval(function () {
           $scope.safeApply(function () {
-            self.percentTime = self.percentTime - 1;
+            //self.percentTime = self.percentTime - 1;
+            self.currentActualQueque();
             self.sendNotification(self.percentTime);
           });
-        }, 2500, 10);
+        }, 2000);
+      },
+      currentActualQueque:function(){
+        api.base.one('queue').one($stateParams.idQueue).one('user').get().then(function (resG) {
+          console.log('resG',resG);
+          this.turno=resG;
+          for(var i=0;i<resG.length;i++){
+            if(resG[i].dni==this.user.dni){
+              this.percentTime=this.turno.length;
+            }
+          }
+          //this.percentTime=this.turno.length;
+        }.bind(this));
+      },
+      exitQueue:function(){
+        api.base.one('queue').one($stateParams.idQueue).one('user').one(this.user.dni).remove().then(function (res) {
+          console.log('resT',res);
+          //self.currentActualQueque();
+        }.bind(this), function (err) {
+          console.log(err);
+          if(err.status==400){
+            //self.currentActualQueque();
+          }
+        }.bind(this));
       },
       sendNotification: function (current) {
         if(current==7 || current==3){

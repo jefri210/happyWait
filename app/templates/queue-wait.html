@@ -3,9 +3,9 @@
   <ion-nav-title>
     <i class="icon ion-ios-timer"></i> Esperando...
   </ion-nav-title>
-  <ion-nav-buttons side="right">
-    <button class="button button-icon icon ion-android-more-vertical"></button>
-  </ion-nav-buttons>
+  <!--<ion-nav-buttons side="right">-->
+    <!--<button class="button button-icon icon ion-android-more-vertical"></button>-->
+  <!--</ion-nav-buttons>-->
   <!-- *********** FIN CABECERA ****************** -->
   <ion-content class="has-header block-queue">
     <div class="cont-circles">
@@ -30,13 +30,18 @@
           <div class="back-color"></div>
         </div>
         <div class="circle-form circle-3">
-          <p>80'</p>
+          <p>{{ctrlQueue.percentTime*15}}'</p>
           <p>aprox.</p>
         </div>
       </div>
 
     </div>
-
+    <div class="padding">
+      <button class="button button-full button-calm"
+              ng-click="ctrlQueue.exitQueue()">
+        Salir de cola
+      </button>
+    </div>
     <div class="block-specification">
       <div class="name-entity">
         {{ctrlQueue.entity.descripcion}}

@@ -35,7 +35,7 @@ $lightGray:#DADADA;
 .list-element-app{
 
   .header-list{
-    background-color: #A8CCE2;
+    background-color: #A8CCE2 !important;
     color: white !important;
     font-size: 19px;
   }
@@ -417,5 +417,22 @@ ion-tabs.tabs-color-active-positive .tab-item{
     right: 5px;
     bottom: 5px;
     color: #888;
+  }
+}
+.cont-sites{
+  .list-sites{
+    .item{
+      background-color: transparent;
+      background-size: cover;
+      a{
+        background-color: transparent;
+        padding-top: 40px;
+        padding-bottom: 20px;
+        h4{
+          color: white;
+          text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.51);
+        }
+      }
+    }
   }
 }
