@@ -378,8 +378,8 @@ ion-tabs.tabs-color-active-positive .tab-item{
     display: block;
     border-radius: 100px;
     border: 1px solid #fff;
-    width: 128px;
-    height: 128px;
+    width: 105px;
+    height: 105px;
     margin: 30px auto 0;
     box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
   }
@@ -426,11 +426,14 @@ ion-tabs.tabs-color-active-positive .tab-item{
       background-size: cover;
       a{
         background-color: transparent;
-        padding-top: 40px;
-        padding-bottom: 20px;
+        padding-top: 75px;
+        padding-bottom: 25px;
+        &.activated{
+          background-color: rgba(168, 204, 226, 0.4);
+        }
         h4{
           color: white;
-          text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.51);
+          text-shadow: 1px 1px 2px rgb(168, 204, 226);
         }
       }
     }

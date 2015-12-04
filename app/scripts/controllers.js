@@ -226,8 +226,8 @@ angular.module('starter.controller', ['ngCordova'])
     $scope.entityPart._constructor();
     console.log("entity");
   }])
-  .controller('queueCtrl', ['$scope', '$interval', 'api', '$stateParams','$cordovaLocalNotification', 'userApp',
-    function ($scope, $interval, api, $stateParams,$cordovaLocalNotification,userApp) {
+  .controller('queueCtrl', ['$scope', '$interval', 'api', '$stateParams','$cordovaLocalNotification', 'userApp','$ionicHistory','$window','$state',
+    function ($scope, $interval, api, $stateParams,$cordovaLocalNotification,userApp,$ionicHistory,$window,$state) {
     console.log("queue");
     $scope.ctrlQueue = {
       percentTime: 0,
@@ -269,20 +269,38 @@ angular.module('starter.controller', ['ngCordova'])
         }, 2000);
       },
       currentActualQueque:function(){
+        var band=false;
         api.base.one('queue').one($stateParams.idQueue).one('user').get().then(function (resG) {
           console.log('resG',resG);
           this.turno=resG;
           for(var i=0;i<resG.length;i++){
             if(resG[i].dni==this.user.dni){
-              this.percentTime=this.turno.length;
+            //  this.percentTime=this.turno.length;
+              $scope.safeApply(function () {
+                this.percentTime=this.turno[i].Turno.posicion;
+              }.bind(this));
+              band=true
             }
+          }
+
+          if(!band){
+            $scope.safeApply(function () {
+              this.percentTime=resG.length;
+            }.bind(this));
+          }
+          if(resG.length==0){
+            this.percentTime=0;
           }
           //this.percentTime=this.turno.length;
         }.bind(this));
       },
       exitQueue:function(){
+        console.log('exit');
         api.base.one('queue').one($stateParams.idQueue).one('user').one(this.user.dni).remove().then(function (res) {
           console.log('resT',res);
+          //$ionicHistory.goBack();
+          //$window.back();
+          $state.go('app.entity',{'idEstablecimiento':$stateParams.idEstablecimiento,'idQueue':$stateParams.idQueue});
           //self.currentActualQueque();
         }.bind(this), function (err) {
           console.log(err);

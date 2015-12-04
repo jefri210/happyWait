@@ -277,7 +277,7 @@ angular.module('starter', ['ionic','starter.controller','ngCordova','config','re
     $ionicConfigProvider.navBar.alignTitle('left');
     $ionicConfigProvider.tabs.position('bottom');
     $ionicConfigProvider.tabs.style('standard');
-    RestangularProvider.setDefaultHttpFields({ cache: true });
+    //RestangularProvider.setDefaultHttpFields({ cache: true });
     //$ionicConfigProvider.scrolling.jsScrolling(false);
   })
 ;

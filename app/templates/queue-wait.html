@@ -18,7 +18,7 @@
              }">
           <ul class="list-circle circle-indication-turn">
             <li>Faltan</li>
-            <li class="number-in-wait">{{ctrlQueue.percentTime}}</li>
+            <li class="number-in-wait">{{ctrlQueue.percentTime-1<0?0:ctrlQueue.percentTime-1}}</li>
             <li><i class="icon ion-android-contact"></i> personas</li>
           </ul>
           <ul class="list-circle circle-my-turn">
@@ -38,6 +38,7 @@
     </div>
     <div class="padding">
       <button class="button button-full button-calm"
+              ng-show="queueCola.motivo"
               ng-click="ctrlQueue.exitQueue()">
         Salir de cola
       </button>
